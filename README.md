@@ -1,6 +1,6 @@
 # AWS Generative AI Demo Projects
 
-A collection of innovative demos showcasing the powerful integration of Generative AI with Amazon Web Services, including Bedrock, Lambda, and more.  
+A collection of innovative demos based on the references below to showcase the powerful integration of Generative AI with Amazon Web Services, including Bedrock, Lambda, and more.  
 
 ## Featured Projects
 
@@ -27,3 +27,11 @@ To visualize the structure of each project, please access the architecture diagr
 
 1. **Explore Project Readmes:**  Navigate to the individual project subfolders for detailed instructions, setup information, and examples.  
 2. **Prerequisites:** Familiarize yourself with the technologies used – AWS services (Amazon Bedrock, Lambda, API Gateway), knowledge bases, foundation models (Llama 2, Claude, Cohere, Stability AI), and relevant libraries (Streamlit, LangChain).
+
+## References
+
+* Generative AI on AWS, Chris Gregly, O'Reilly, 2024
+* AWS Amazon Bedrock & Generative AI - Beginner to Advanced, Rahul Trisal, Udemy, 2024
+* Large Language Model-Based Solutions, Shreyas Subramanian, Wiley, 2024
+* Transformers for Natural Language Processing and Computer Vision, Denis Rothman, Packt, 2024
+* LangChain - A Hands-On Guide to Modern AI Application Development, Glen Patzlaff, 2024
