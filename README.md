@@ -13,7 +13,7 @@ A collection of innovative demos based on the references below to showcase the p
 * [HR Q&A Application with RAG](/aws-gai-rag-hr-qa)  
    Simplifies HR processes with a Retrieval Augmented Generation (RAG) based Q&A application, providing accurate and relevant answers to commonly asked questions.
 
-* [Movie Poster Design with Generative AI](/aws-gai-stabilityai-poster) 
+* [Movie Poster Design with Generative AI](/aws-gai-stabilityai-poster)    
    Harnesses the power of Generative AI to design visually striking movie posters with Stability AI, triggered through AWS services.
 
 * [Text Summarization for Manufacturing Issue Resolution](/aws-gai-summarize)   
