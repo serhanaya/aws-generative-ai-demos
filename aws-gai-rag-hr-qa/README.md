@@ -9,7 +9,7 @@ This project demonstrates how to build an HR Q&A application using Retrieval Aug
 
 The following diagram illustrates the architecture of the project:
 
-<img src="./docs/aws-gai-rag-hr-qa-arch.jpg" alt="Architecture Diagram" width="500">
+<img src="./docs/aws-gai-rag-hr-qa-arch.jpg" alt="Architecture Diagram" width="600">
 
 ## Components
 

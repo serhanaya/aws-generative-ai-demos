@@ -19,7 +19,7 @@ This project streamlines issue resolution processes for manufacturers of large e
 
 The following diagram illustrates the architecture of the project:
 
-<img src="docs/aws-gai-summarize-arch.jpg" alt="Architecture Diagram" width="500">
+<img src="docs/aws-gai-summarize-arch.jpg" alt="Architecture Diagram" width="600">
 
 ## Components
 

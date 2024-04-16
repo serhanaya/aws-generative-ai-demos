@@ -14,7 +14,7 @@ This project demonstrates the use of Generative AI for movie poster design.  It 
 
 The following diagram illustrates the architecture of the project:
 
-<img src="./docs/movie_poster_design_architecture.jpg" alt="Architecture Diagram" width="500">
+<img src="./docs/movie_poster_design_architecture.jpg" alt="Architecture Diagram" width="600">
 
 ## Components
 

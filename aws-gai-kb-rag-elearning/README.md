@@ -39,7 +39,7 @@ This project builds a serverless e-learning application that leverages a knowled
 
 The following diagram illustrates the architecture of the project:
 
-<img src="docs/aws-gai-kb-rag-elearning-arch.jpg" alt="Architecture Diagram" width="500">
+<img src="docs/aws-gai-kb-rag-elearning-arch.jpg" alt="Architecture Diagram" width="600">
 
 ## Components
 
