@@ -49,6 +49,6 @@ The following components are involved in the project:
 2. **AWS API Gateway:**  Receives the query and forwards it as an event to the AWS Lambda function.
 3. **AWS Lambda:**  Invokes the Knowledge Base's Retrieve and Generate API, passing the user's prompt.
 4. **Knowledge Base:** Extracts relevant context from the PDF documents in the S3 bucket.
-5. **Bedrock Cloud Foundation Model:**  Processes the context and query, generating a comprehensive response. 
+5. **Claude Foundation Model:**  Processes the context and query, generating a comprehensive response. 
 6. **AWS Lambda:** Relays the response back to the user via the API Gateway.
 
