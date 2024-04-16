@@ -28,7 +28,7 @@ The following components are involved in the project:
 4. **LangChain Response Handling:** Formats the response for display and updates the conversation memory.
 5. **Output (Streamlit):** The chatbot's response is presented to the user in the Streamlit interface.
 
-**LangChain Modules and Their Roles**
+**LangChain Modules**
 
 * **Conversation Buffer Memory:** Enables thechatbot to track the discussion and understandthe context of follow-up questions.
 * **Prompt Templates:** Structures prompts in away that maximizes the effectiveness of the Llama2 foundation model.
