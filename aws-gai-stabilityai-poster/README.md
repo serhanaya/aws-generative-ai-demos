@@ -141,9 +141,7 @@ Check Lambda function from source folder: [src/lambda_function.py](src/lambda_fu
    * Under the URL field, go to the `Params` tab.
    * Add a new key-value pair:
        * Key: `prompt`
-       * Value: Your image generation prompt (carefully written for best results). Sample Prompt:
-
-             An image of a spy agent fighting in a rival country with guns and helicopters with backdrop of a shopping complex with heavy snow and old Greek architecture building late in the evening with sunsetting behind mountains. The image should be a photograph with Aaron Jasinski style
+       * Value: Your image generation prompt (carefully written for best results).
 
   **Send the Request:**
    * Click the `Send` button in Postman.
@@ -159,3 +157,13 @@ Check Lambda function from source folder: [src/lambda_function.py](src/lambda_fu
 **Important Notes:**
 
 * **Prompt Design:** The way you write your prompt significantly impacts the quality of the generated image. Experiment with different styles and structures.
+
+## Output
+
+Following image was generated using following sample prompt:
+
+```
+An image of a spy agent in a rival country with heavy snow and old Greek architecture building late in the evening with sunsetting behind mountains. The image should be a photograph with Aaron Jasinski style.
+```
+
+<img src="./docs/poster.jpg" alt="Architecture Diagram" width="300">
