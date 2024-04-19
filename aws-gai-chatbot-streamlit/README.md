@@ -1,14 +1,8 @@
 ## Chatbot Powered by Amazon Bedrock, Llama 2 and Streamlit
 
 This project demonstrates how to construct a chatbot leveraging Amazon Bedrock, the Llama 2 foundation model, LangChain, and Streamlit.
-import json
-#1. import boto3
-import boto3
-import base64
-import datetime
-#2. Create client connection with Bedrock and S3 Services – Link
-client_bedrock = boto3.client('bedrock-runtime')
-client_s3 = boto3.client('s3')
+
+**Key Features**
 
 * **Amazon Bedrock:**  Provides the knowledge base and integration for the foundation model.
 * **Llama 2 Foundation Model:**  Supplies the core AI capabilities for natural language understanding and response generation.
