@@ -63,6 +63,63 @@ To set up the project, follow these steps:
      * The ability to invoke Amazon Bedrock.
    * **Important:** For production, refine these permissions to be more granular.
 
-**Lambda Function Code**
+4. **Lambda Function Code**
 
 Check Lambda function from source folder: [src/lambda_function.py](src/lambda_function.py)
+
+Absolutely! Here's the converted version with proper Markdown formatting:
+
+5. **API Gateway**
+
+   **Create an API Gateway REST API**
+   * Navigate to the API Gateway service in the AWS console.
+   * Click `Create API`.
+   * Select `REST API` and click `Build`.
+   * Give your API a descriptive name (e.g., `Movie Poster API`).
+
+   **Create a Resource**
+   * Click on `Actions` and select `Create Resource`.
+   * Name the resource descriptively (e.g.,  `movie-poster-api-design`).
+
+   **Create a GET Method**
+   * Select the newly created resource.
+   * Click on `Actions` and select `Create Method`.
+   * Choose `GET` from the dropdown.
+   * Set the following:
+      *  Integration type: Lambda Function
+      *  Lambda Function: (Select your existing Lambda function) 
+
+   **Configure Method Request**
+   * Navigate to the GET method's `Method Request`.
+   * In `URL Query String Parameters`, click `Add query string`.
+   * Set the following:
+      * Parameter name: `prompt`
+      * Required: True 
+
+   **Enable Request Validation**
+   * In the `Method Request` settings:
+      * Check `Validate query string parameters and headers`.
+
+   **Configure Integration Request**
+   * Navigate to the GET method's `Integration Request`.
+   * Go to `Mapping Templates`.
+   *  Set Content-Type to `application/json`.
+   * Add the following template body:
+
+   ```json
+   {
+     "prompt": "$input.params('prompt')" 
+   }
+   ```
+
+   **Deploy the API**
+   * Click  on `Actions` and select `Deploy API`.
+   * Create a new stage (e.g., `dev`) and click `Deploy`.
+
+**Important Notes:**
+
+* **IAM Permissions:** Ensure your Lambda function has these IAM permissions:
+   * Amazon Bedrock Full Access
+   * Amazon S3 Full Access (You'll want to refine this for production)
+* **Re-Deployment:** Any changes to the API Gateway configuration require re-deployment for them to take effect. 
+
