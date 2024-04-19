@@ -32,8 +32,8 @@ def lambda_handler(event, context):
     print(response_bedrock_finalimage)
     
     # Upload the File to S3 using Put Object Method
-    poster_name = 'posterName'+ datetime.datetime.today().strftime('%Y-%M-%D-%M-%S')
-    
+    poster_name = 'posterName'+ datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S')
+        
     client_s3.put_object(
         Bucket='<BUCKET_NAME>',
         Body=response_bedrock_finalimage,
