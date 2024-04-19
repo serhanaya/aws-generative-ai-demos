@@ -67,7 +67,6 @@ To set up the project, follow these steps:
 
 Check Lambda function from source folder: [src/lambda_function.py](src/lambda_function.py)
 
-Absolutely! Here's the converted version with proper Markdown formatting:
 
 5. **API Gateway**
 
@@ -123,3 +122,40 @@ Absolutely! Here's the converted version with proper Markdown formatting:
    * Amazon S3 Full Access (You'll want to refine this for production)
 * **Re-Deployment:** Any changes to the API Gateway configuration require re-deployment for them to take effect. 
 
+
+6. **Postman Testing**
+
+  **Download Postman:** Download and install Postman, a free API testing tool, if you haven't already.
+
+  **Set up a GET Request:**
+   * Open a new window in Postman.
+   * Set the HTTP method to `GET`.
+   * Obtain the API Gateway invoke URL:
+      * In the API Gateway console, go to `Stages`.
+      * Select your deployment stage (e.g., `dev`)
+      * Click on your GET method.
+      * Copy the `Invoke URL`.
+   * Paste the invoke URL into Postman.
+
+  **Add the Query Parameter:**
+   * Under the URL field, go to the `Params` tab.
+   * Add a new key-value pair:
+       * Key: `prompt`
+       * Value: Your image generation prompt (carefully written for best results). Sample Prompt:
+
+             An image of a spy agent fighting in a rival country with guns and helicopters with backdrop of a shopping complex with heavy snow and old Greek architecture building late in the evening with sunsetting behind mountains. The image should be a photograph with Aaron Jasinski style
+
+  **Send the Request:**
+   * Click the `Send` button in Postman.
+
+  **Process the Response:**
+   * You should receive a status code of 200 if successful.
+   * The response body contains a pre-signed URL to your generated image.
+   * Copy the pre-signed URL.
+
+  **View the Image**
+   * Paste the pre-signed URL into a browser to view and download the generated image.
+
+**Important Notes:**
+
+* **Prompt Design:** The way you write your prompt significantly impacts the quality of the generated image. Experiment with different styles and structures.
