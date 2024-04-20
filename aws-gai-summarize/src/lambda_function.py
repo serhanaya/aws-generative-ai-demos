@@ -14,8 +14,8 @@ def lambda_handler(event, context):
        modelId='cohere.command-light-text-v14',
        body=json.dumps( {
         "prompt": input_prompt,
-        "temperature": 0.9,
-        "p": 0.75,
+        "temperature": 0.5,
+        "p": 0.8,
         "k": 0,
         "max_tokens": 100}))
 
