@@ -38,7 +38,7 @@ The following components are involved in the project:
 
 **1. Create Function**
 
-Navigate to AWS Lambda and create a new function (e.g., `Demo Manufacturing`) with `Python 3.12` runtime.
+Navigate to AWS Lambda and create a new function (e.g., `DemoManufacturing`) with `Python 3.12` runtime.
 
 **2. Verify Boto3 Version**
 
@@ -65,7 +65,7 @@ Navigate to AWS Lambda and create a new function (e.g., `Demo Manufacturing`) wi
 
 Check [lambda_function.py](src/lambda_function.py) for full code. Details of the important parts of the code are as follow:.
 
-* Prepare the request syntax according to Bedrock documentation:
+* Prepare the request syntax according to [documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime/client/invoke_model.html):
 
    ```python
    client_bedrock_request = client_bedrock.invoke_model(
@@ -100,7 +100,7 @@ Check [lambda_function.py](src/lambda_function.py) for full code. Details of the
 
 **8. Create an API and Resource**
 
-* Navigate to the AWS `API Gateway` console
+* Navigate to the AWS API Gateway console
 * Click `Create API` and choose `Rest API`
 * Give your API a descriptive name (e.g., `DemoManufacturingAPI`)
 * Create a resource within the API (e.g., `DemoManufacturing`) 
@@ -131,10 +131,43 @@ Check [lambda_function.py](src/lambda_function.py) for full code. Details of the
 
 **12. Deploy the API**
 
-* Click "Actions" and select "Deploy API"
-* Create a new stage (e.g., "dev") and deploy
+* Click `Actions` and select `Deploy API`
+* Create a new stage (e.g., `dev`) and deploy
 
 **13. Test**
 
-* Access the API endpoint (find this under the "stages" section of your API )
+* Access the API endpoint (find this under the `stages` section of your API )
 * Use the query string parameter `prompt` to provide input to your Lambda function (e.g., `?prompt=What is your name?`) 
+
+* Sample Prompt for testing:
+
+    ```
+    Summarize following text in 2 lines.
+
+    This is a on-site log report of turbine breakdown.
+
+    Issue Log Date - 25-12-2023, 
+    Model Number - TB-CL-7882, 
+    Issue - Cracks appeared in the part MR 7882-9571 next to the rotor  hub. The nut connecting the rotor blade to the rotor hub seems to be     damaged. The Anemometer readings seem to be within range. The   electric braking seems to be unused. No indication of damage to any   other component of the turbine except normal wear and tear.
+    Potential Root Cause - Seems due to reduced tensile strength of the     nut connecting the blade to the rotor.
+    Last Maintenance Date - 12-12-2023, Last Maintenance Issues Recorded - No known issues recorded and all the parameters were within range.
+    ```
+* Testing with Postman:
+
+    - Use the API endpoint (created in previous steps) as the URL
+    - Set method to `POST`
+    - Use `prompt`as key for query params, and above sample prompt for `value`.
+    - Click `Send`
+
+* Following is the response for my test using this sample prompt:
+
+    ```
+    There is a breakdown of a turbine with the following issues:
+    - Cracks appeared in the part, Model Number TB-CL-7882, next to  the rotor hub due to reduced tensile strength of the connecting  nut.
+    - There are no other recorded damages except normal wear and  tear, and the anemometer readings seem within range.  
+
+    ```
+
+    - The summarized response was accurate and concise.
+        - It correctly identified the cracks' location and normal anemometer  - readings.
+        - It accurately pinpointed reduced tensile strength as the potential  - root cause.
