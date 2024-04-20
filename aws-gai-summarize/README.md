@@ -33,3 +33,110 @@ The following components are involved in the project:
     * Returns the summarized report to the API Gateway.
 * **AWS Bedrock:** Interfaces with the Cohere foundation model for text summarization.
 * **Cohere Foundation Model:** The generative AI model responsible for generating concise equipment issue summaries.
+
+## Project Setup
+
+**1. Create Function**
+
+Navigate to AWS Lambda and create a new function (e.g., ` Demo Manufacturing`) with Python 3.12 runtime.
+
+**2. Verify Boto3 Version**
+
+* **Import and Print Version:**  Import the `boto3` library within your function's code and print its version.
+* **Upgrade if Necessary:** If the version is below `1.28.63`,  you'll need to create a Lambda layer to upgrade Boto3 to the latest version.
+
+**3. Prepare Lambda Layer (if needed)**
+
+* **Obtain ARN:**  If you created a Lambda layer to upgrade Boto3, retrieve its ARN (Amazon Resource Name).
+* **Add Layer to Function:** In your Lambda function's settings, add the layer using the ARN.
+
+**5. Test Boto3 Version**
+
+* **Retest:** Run your Lambda function again to verify that the Boto3 version is now above `1.28.63`. 
+
+Here's a summary of the implementation steps for connecting Lambda to Amazon Bedrock in markdown format:
+
+**6. Create IAM Role for Lambda**
+
+* Navigate to the AWS Lambda console.
+* Open the configuration for the Lambda function.
+* In the permissions section, attach the **AmazonBedrockFullAccess** policy.
+* Increase the timeout under **General Configuration**. A good starting point is 1 minute and 3 seconds.
+
+**7. Code Bedrock Invocation**
+
+Check [lambda_function.py](src/lambda_function.py) for full code. Details of the important parts of the code are as follow:.
+
+* Prepare the request syntax according to Bedrock documentation:
+
+   ```python
+   client_bedrock_request = client_bedrock.invoke_model(
+       body=json.dumps({
+           "prompt": input_prompt,
+           "temperature": 0.9,
+           "top_p": 0.75, 
+           "max_tokens": 100
+       }),
+       content_type='application/json',
+       accept='application/json',
+       model_id='<your-bedrock-model-id>' 
+   )
+   ```
+ * Retrieve, parse, and format the response:
+   ```python
+   client_bedrock_byte = client_bedrock_request["body"].read()
+   client_bedrock_string = json.loads(client_bedrock_byte)
+   client_final_response = client_bedrock_string['generations'][0]['text']
+   ```
+* Return the final response:
+   ```python
+   return client_final_response
+   ```
+
+**Important Notes:**
+
+* You'll need a valid Bedrock Model ID – get this from the Bedrock console.
+* Adjust parameters like `temperature`, `top_p` and `max_tokens` as needed. 
+* You may need to add error handling to your code for production use. 
+
+
+**8. Create an API and Resource**
+
+* Navigate to the AWS `API Gateway` console
+* Click `Create API` and choose `Rest API`
+* Give your API a descriptive name (e.g., `DemoManufacturingAPI`)
+* Create a resource within the API (e.g., `DemoManufacturing`) 
+
+**9. Create a POST Method**
+
+* Select the resource you just created
+* Click `Create Method` and choose `POST` 
+* Set the Integration type to `Lambda Function`
+* Enter the name of your existing Lambda function 
+
+**10. Configure the Method Request**
+
+* Open the `Method Request" settings
+* Under `URL Query String Parameters`, add a new parameter named `prompt` and mark it as `Required`
+
+**11. Configure the Integration Request**
+
+* Open the `Integration Request` settings
+* Under `Mapping Templates`, add a new template with the Content-Type `application/json`
+* Paste the following template code, replacing placeholders as needed:
+
+```json
+{ 
+  "prompt": "$input.params('prompt')" 
+}
+```
+
+**12. Deploy the API**
+
+* Click "Actions" and select "Deploy API"
+* Create a new stage (e.g., "dev") and deploy
+
+**13. Test**
+
+* Access the API endpoint (find this under the "stages" section of your API )
+* Use the query string parameter `prompt` to provide input to your Lambda function (e.g., `?prompt=What is your name?`) 
