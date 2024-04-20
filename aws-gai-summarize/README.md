@@ -162,12 +162,6 @@ Check [lambda_function.py](src/lambda_function.py) for full code. Details of the
 * Following is the response for my test using this sample prompt:
 
     ```
-    There is a breakdown of a turbine with the following issues:
-    - Cracks appeared in the part, Model Number TB-CL-7882, next to  the rotor hub due to reduced tensile strength of the connecting  nut.
-    - There are no other recorded damages except normal wear and  tear, and the anemometer readings seem within range.  
+    The log reports that the turbine model # TB-CL-7882 has a issue with cracks appearing due to reduced tensile strength of the nut connecting the rotor blade, with no other damage noted except normal wear and tear. The last maintenance was recorded as 12-12-2023 with no issues recorded.
 
     ```
-
-    - The summarized response was accurate and concise.
-        - It correctly identified the cracks' location and normal anemometer  - readings.
-        - It accurately pinpointed reduced tensile strength as the potential  - root cause.
