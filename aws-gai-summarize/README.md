@@ -38,11 +38,11 @@ The following components are involved in the project:
 
 **1. Create Function**
 
-Navigate to AWS Lambda and create a new function (e.g., ` Demo Manufacturing`) with Python 3.12 runtime.
+Navigate to AWS Lambda and create a new function (e.g., `Demo Manufacturing`) with `Python 3.12` runtime.
 
 **2. Verify Boto3 Version**
 
-* **Import and Print Version:**  Import the `boto3` library within your function's code and print its version.
+* **Import and Print Version:**  Import the `boto3` library within your function's code and check the version.
 * **Upgrade if Necessary:** If the version is below `1.28.63`,  you'll need to create a Lambda layer to upgrade Boto3 to the latest version.
 
 **3. Prepare Lambda Layer (if needed)**
@@ -53,8 +53,6 @@ Navigate to AWS Lambda and create a new function (e.g., ` Demo Manufacturing`) 
 **5. Test Boto3 Version**
 
 * **Retest:** Run your Lambda function again to verify that the Boto3 version is now above `1.28.63`. 
-
-Here's a summary of the implementation steps for connecting Lambda to Amazon Bedrock in markdown format:
 
 **6. Create IAM Role for Lambda**
 
