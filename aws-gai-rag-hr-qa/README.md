@@ -48,3 +48,15 @@ RAG offers several benefits over traditional question-answering approaches:
 - **Improved accuracy and relevance:** By combining retrieval and generation, RAG can provide more accurate and relevant answers to user questions.
 - **Scalability:** The data ingestion workflow can be scaled to handle large volumes of documents.
 - **Flexibility:** RAG can be used with different foundation models and vector stores.
+
+## Prerequsites:
+
+```
+pip install flask-sqlalchemy
+pip install pypdf
+pip install faiss-cpu
+```
+
+## Sample Question and Response
+
+<img src="./docs/aws-gai-rag-hr-qa-sample.jpg" alt="Architecture Diagram" width="425">
