@@ -38,8 +38,11 @@ def create_hr_llm():
 
     llm = BedrockLLM(
         credentials_profile_name='default', 
-        model_id='meta.llama2-70b-chat-v1', 
-        model_kwargs={"temperature": 0.5, "top_p": 0.8, "max_gen_len": 512})
+        model_id='anthropic.claude-v2', 
+        model_kwargs={
+        "max_tokens_to_sample":3000,
+        "temperature": 0.1,
+        "top_p": 0.9})
 
     return llm
 
