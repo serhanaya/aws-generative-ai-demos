@@ -3,13 +3,12 @@ from langchain_aws.llms.bedrock import BedrockLLM
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationChain
 
-MODEL_ID = 'meta.llama2-70b-chat-v1'
+MODEL_ID = 'anthropic.claude-v2'
 CREDENTIALS_PROFILE = 'default'  
 MODEL_KWARGS = {
-    "temperature": 0.5,
-    "top_p": 0.5,
-    "max_gen_len": 512
-}
+        "max_tokens_to_sample":3000,
+        "temperature": 0.1,
+        "top_p": 0.9}
 
 def load_llm():
     """Loads the Bedrock LLM with specified configuration.
@@ -49,8 +48,10 @@ def create_conversation_chain():
     memory = create_memory()
     return ConversationChain(llm=llm, memory=memory, verbose=True)
 
+chain = create_conversation_chain()
+
 def get_chat_response(input_text):
-    chain = create_conversation_chain()
+    
     try:
         response = chain.run("The following is a conversation with a helpful and informative chatbot. Only provide the chatbot's response. Do not include 'Human:' or 'AI:' in your responses.\nChatbot: " + input_text + "\nAnswer: ")
         return response
