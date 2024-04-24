@@ -108,3 +108,15 @@ The following components are involved in the project:
     * This function takes a user's question, interacts with the Amazon Bedrock Knowledge Base using the `RetrieveAndGenerate API`, and provides a response based on the knowledge base and the selected foundation model.
     * Configuration -> Change time limit to 1 minutes.
     * Permissions -> Allow lambda exec role to be able to interact with Amazon Bedrock.
+    * Check [retrieve_and_generate](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-agent-runtime/client/retrieve_and_generate.html) documentation for request and response parameters.
+    * Following is the response for my test using this sample prompt. The response includes the source documents used to generate the response.
+
+            Prompt: "Which EBS volume should I use for high    throughput?"
+
+            Response: For high throughput workloads, you should use  Throughput Optimized HDD (st1) or Cold HDD (sc1)    volumes. These volumes are designed for   throughput-intensive and big-data workloads, large I/O  sizes, and sequential I/O patterns. ST1 volumes deliver   high throughput measured in MB/s and can burst up to 250   MB/s per TB. SC1 volumes can burst up to 80 MB/s per TB."
+
+         <img src="docs/aws-gai-kb-rag-elearning-response.jpg" alt="Architecture Diagram" width="450">
+
+   * Add `print(client_knowledgebase['citations'])` to the lambda function to print the sources used to generate the response.
+
+          'location': {'type': 'S3', 's3Location': {'uri': 's3://<kb-demo-bucket>/Amazon EC2 FAQs.pdf'}}
