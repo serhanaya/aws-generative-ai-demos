@@ -113,7 +113,7 @@ The following components are involved in the project:
 
             Prompt: "Which EBS volume should I use for high    throughput?"
 
-            Response: For high throughput workloads, you should use  Throughput Optimized HDD (st1) or Cold HDD (sc1)    volumes. These volumes are designed for   throughput-intensive and big-data workloads, large I/O  sizes, and sequential I/O patterns. ST1 volumes deliver   high throughput measured in MB/s and can burst up to 250   MB/s per TB. SC1 volumes can burst up to 80 MB/s per TB."
+            Response: For high throughput workloads, you should use Throughput Optimized HDD (st1) volumes. ST1 volumes are backed by hard disk drives (HDDs) and are ideal for frequently accessed, throughput intensive workloads with large datasets and large I/O sizes. They deliver high throughput measured in MB/s, including the ability to burst up to 250 MB/s per TB."
 
          <img src="docs/aws-gai-kb-rag-elearning-sample-response.jpg" alt="Architecture Diagram" width="450">
 
