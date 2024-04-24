@@ -26,7 +26,7 @@ Using Amazon Bedrock Knowledge Base offers several benefits:
 
 ## Project Details  
 
-This project builds a serverless e-learning application that leverages a knowledge base, the Bedrock Cloud Foundation model, AWS Lambda, and AWS API Gateway. The application is designed to support employees learning about AWS services in a large organization migrating its applications to AWS.
+This project builds a serverless e-learning application that leverages a knowledge base, the Bedrock Claude Foundation model, AWS Lambda, and AWS API Gateway. The application is designed to support employees learning about AWS services in a large organization migrating its applications to AWS.
 
 **Key Features**
 
@@ -52,3 +52,50 @@ The following components are involved in the project:
 5. **Claude Foundation Model:**  Processes the context and query, generating a comprehensive response. 
 6. **AWS Lambda:** Relays the response back to the user via the API Gateway.
 
+**Important Notes**
+
+* **Region:** Use `us-east-1` for this service currently.
+* **IAM User:**  Create an IAM user with admin access for setup (don't use the root account).
+* **Costs:** The service incurs costs (around $0.50 - $1 per hour) mainly due to the OpenSearch serverless vector store.
+
+**Amazon Bedrock Knowledge Base Setup**
+
+1. **Identify Data Source:**
+   * Create an S3 bucket.
+   * Upload relevant documents to the S3 bucket.
+
+2.  **Create the Knowledge Base**
+   * In the Amazon Bedrock console, navigate to Knowledge Base.
+   * Click `Create Knowledge Base` and provide the following:
+      * Name and description
+      * Create a new IAM service role 
+   * Select the S3 data source.
+   * Use default chunking strategy.
+   * Select  Titan embeddings.
+   * Use the default OpenSearch serverless vector store.
+   * Review settings and click `Create Knowledge Base`.
+
+3. **Sync the Knowledge Base**
+   * Once the knowledge base is created, click `Sync` and wait for completion.
+
+4. **Test the Knowledge Base**
+   * Select the Anthropic foundation model.
+   * Ask questions related to your uploaded data. Examples: "Which EBS volume should I use for high throughput?", "Which EBS volume should I use for high IOPs?"
+
+**Amazon Bedrock APIs**
+
+* **RetrieveAPI**
+    * **Input:** User question as a prompt.
+    * **Actions:** 
+       * Converts the question into vector embeddings
+       * Searches for similar content in the knowledge base.
+       * Generates a context 
+    * **Output:** Context relevant to the query.
+
+* **RetrieveAndGenerateAPI**
+    * **Input:** User question as a prompt.
+    * **Actions:**
+        * Queries the knowledge base (similar to RetrieveAPI)
+        * Generates a response based on the search results
+        * Can cite sources of the response 
+    * **Output:**  A contextual answer to the user's question.
