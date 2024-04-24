@@ -58,7 +58,7 @@ The following components are involved in the project:
 * **IAM User:**  Create an IAM user with admin access for setup (don't use the root account).
 * **Costs:** The service incurs costs (around $0.50 - $1 per hour) mainly due to the OpenSearch serverless vector store.
 
-**Implementation Steps**
+## Project Setup
 
 1. **Identify Data Source:**
    * Create an S3 bucket.
@@ -71,7 +71,7 @@ The following components are involved in the project:
       * Create a new IAM service role 
    * Select the S3 data source.
    * Use default chunking strategy.
-   * Select  Titan embeddings.
+   * Select Titan embeddings.
    * Use the default OpenSearch serverless vector store.
    * Review settings and click `Create Knowledge Base`.
 
@@ -79,8 +79,10 @@ The following components are involved in the project:
    * Once the knowledge base is created, click `Sync` and wait for completion.
 
 4. **Test the Knowledge Base**
-   * Select the Anthropic foundation model.
-   * Ask questions related to your uploaded data. Examples: "Which EBS volume should I use for high throughput?", "Which EBS volume should I use for high IOPs?"
+   * Select the Anthropic foundation model. Example: `Claude Instant v1.2`.   
+   * Ask questions related to your uploaded data. Example:          
+   
+         "Which EBS volume should I use for high throughput?"
 
 **Amazon Bedrock APIs**
 
@@ -95,7 +97,7 @@ The following components are involved in the project:
 * **RetrieveAndGenerateAPI**
     * **Input:** User question as a prompt.
     * **Actions:**
-        * Queries the knowledge base (similar to RetrieveAPI)
+        * Queries the knowledge base (similar to `RetrieveAPI`)
         * Generates a response based on the search results
         * Can cite sources of the response 
     * **Output:**  A contextual answer to the user's question.
@@ -104,3 +106,5 @@ The following components are involved in the project:
 
     * Use [lambda_function.py](src/lambda_function.py) in the source folder for code.
     * This function takes a user's question, interacts with the Amazon Bedrock Knowledge Base using the `RetrieveAndGenerate API`, and provides a response based on the knowledge base and the selected foundation model.
+    * Configuration -> Change time limit to 1 minutes.
+    * Permissions -> Allow lambda exec role to be able to interact with Amazon Bedrock.
