@@ -58,7 +58,7 @@ The following components are involved in the project:
 * **IAM User:**  Create an IAM user with admin access for setup (don't use the root account).
 * **Costs:** The service incurs costs (around $0.50 - $1 per hour) mainly due to the OpenSearch serverless vector store.
 
-**Amazon Bedrock Knowledge Base Setup**
+**Implementation Steps**
 
 1. **Identify Data Source:**
    * Create an S3 bucket.
@@ -99,3 +99,8 @@ The following components are involved in the project:
         * Generates a response based on the search results
         * Can cite sources of the response 
     * **Output:**  A contextual answer to the user's question.
+
+5. **Create Lambda Function**
+
+    * Use [lambda_function.py](src/lambda_function.py) in the source folder for code.
+    * This function takes a user's question, interacts with the Amazon Bedrock Knowledge Base using the `RetrieveAndGenerate API`, and provides a response based on the knowledge base and the selected foundation model.
