@@ -5,7 +5,7 @@ A collection of innovative demos based on the references below to showcase the p
 ## Featured Projects
 
 * [Chatbot Powered by Amazon Bedrock, Cloude 2, and Streamlit](/aws-gai-chatbot-streamlit)  
-   A conversational AI application that leverages a knowledge base and the Llama 2 foundation model for intelligent responses.
+   A conversational AI application that leverages a knowledge base and the Claude 2 foundation model for intelligent responses.
 
 * [Serverless E-Learning App using Amazon Bedrock Knowledge Base](/aws-gai-kb-rag-elearning)    
    Facilitates employee onboarding to AWS with an e-learning app powered by a knowledge base and Claude Foundation Model.
