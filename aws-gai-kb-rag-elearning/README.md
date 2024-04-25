@@ -120,3 +120,40 @@ The following components are involved in the project:
    * Add `print(client_knowledgebase['citations'])` to the lambda function to print the sources used to generate the response.
 
           'location': {'type': 'S3', 's3Location': {'uri': 's3://<kb-demo-bucket>/Amazon EC2 FAQs.pdf'}}
+
+
+6.  **API Gateway - Create API:**
+    *   In the API Gateway console, create a new REST API (e.g., named "E-Learning Knowledge Base").
+
+7.  **API Gateway - Create Method:**
+    *   Add a GET method to your API resource.
+    *   Link it to your existing Lambda function (ensure you've selected the correct region).
+
+8.  **API Gateway - Configure Method Request:**
+    *   Under Method Request settings: 
+        *   Add a query string parameter named "prompt".
+        *   Enable "validate body request query string parameter and header"
+
+9.  **API Gateway - Configure Integration Request:**
+    *   Under Integration Request:
+        *   Add a mapping template with the content type "application/json".
+        *   Use the following template body:
+           ```json
+            {
+                "prompt": "$input.params('prompt')" 
+            }
+           ```
+       *   **Important:** Ensure quotation marks are formatted correctly to avoid errors.
+
+10.  **API Gateway - Deploy API:**
+    *   Create a new API stage (e.g., "dev")
+    *   Deploy the API to this stage. Remember to redeploy after any changes!
+
+11. **API Gateway - Usage**
+
+*   Invoke the API endpoint using the following format. Replace `invoke-url` with the URL of your deployed API:
+
+    `https://invoke-url?prompt=your_question_here`
+
+   *  Example: 
+     `https://invoke-url?prompt=Which%20is%20the%20best%20compute%20resource` 
